@@ -159,4 +159,98 @@ potential payoff is
 - reduced project choas
 - hiher customer and team member satifaction
 - productat that do what theyre supposed t od o
--
+
+
+
+## Requirements from the Customer's Perspective
+
+Great Quote About Requirements
+
+Key - get people involved who will USE the system, not just
+
+"On-Site Customer Representative" aka "Product Owner" to work closely
+
+Three Key "Requirements"
+- Business - system idea
+- User - user request
+- Functional - Jira ticket
+
+The Expectation Gap - the gulf between what cutomers really need and what developers deliver based on what they heard about at the beginning
+
+best way to minimize the expectation gap is to arrange frequent contact porints with suitable customer representatives
+
+Stakeholder - person, group or org actively invovled in a project. Is affected by process or outcome, or can influcence process or outcome.
+ Customer - subset of Stakeholders that either derives direct or indeirect benefit from a product
+
+End Users - subset of customers - will either operate the software, or receive output
+
+- tasks they need to perform with the product
+- the outputs they need
+- quality characteristics the product is expected to have
+
+Use the Org chart to search for all stakeholders that will be affected by new system
+
+Business Reqruieets shold come from the person who is accountable for the business value of the project
+- User requirements should come from USERS (press keys, receive outputs)
+
+
+### The Customer-Development Partnership
+Well-exectuted design based on excellent requirements
+
+
+#### Requirements Bill of Rights for Softwware Customers
+##### You have the right to
+1. Expect BAs to speak your language (business language - provide a glossary, no technical jargon)
+2. Exepect BAs to learn about your business and your objectives
+3. Expect BAs to record requirements in an appropriate form
+4. Receive explanations of requirements practices and deliverables
+5. Change your requirements
+6. Expect an environment of mutual respect
+7. Hear ideas and alternatives for your requirements and for their solution
+8. Describe characteresitcs that will make the product easy to use
+9. Hear about ways to adjust requirements to accelertat development through re-use
+10. Receive a system that meets your functional needs and quality expectations
+
+#### You have the responsibility to
+1. Educate BAs and developers about your business
+2. Dedicate the time that it takes to provide and clarify requirements
+3. Be specific and precise when providing input about requirements
+4. Make timely devisions about reqruiremts when asked
+5. Respect a developer's assessment of the cost and feasibilit of requirements
+6. Set realistic requirement priorities in collaboration with developers
+7. Review requiremets and evaluate prototypes
+8. Establish acceptance criteria
+9. Promptly communicate changes to requirements
+10. Respect the requirements development process
+
+Requirements need to written and organized in a way uour understand.
+
+
+Find specific examples to demonstrate the impact - use appropraite metrics (dollars, time, lost business opprountieis)
+
+Show Development Managers how poor requirements slow down design adn lead to excessive and expensive course corrections
+
+Have Develoeprs review requirements as they evolve
+Involve QA in requirements review EARLY ON
+
+
+#### Identifying decision makers
+need one singular Decision Leader and HOW a decision will ne ade. Change control board is the decision maker.
+
+Requirements NEED a sign off - and need to know what this means
+SIgnOff is a Milestone with clear shared understanding of the activiteis that lead to sign off nad implications
+
+
+#### Establishing the requirements baseline
+- I agree that this set of requirements erpresnets our best understainf on hre requireets for then ext portion of this project and the solution described will meet out needs as we understand them today. I agree to make future changes in this baseline thourhg the projects defined change process. I realize that changes might require us to renegotiatio cost, resource and schedule commitments.
+
+### BA Should put requirements under Change Control
+
+### If someone does not sign off, assume they don't approve
+Document that they did not sign off, and that Impact assesmsnet
+
+
+Agile does NOT include fomral sign-off. USER STORIES in Product Backlog.
+
+
+#### page 41
