@@ -162,7 +162,7 @@ potential payoff is
 
 
 
-## Requirements from the Customer's Perspective
+## Chapter 2 - Requirements from the Customer's Perspective
 
 Great Quote About Requirements
 
@@ -251,6 +251,15 @@ Document that they did not sign off, and that Impact assesmsnet
 
 
 Agile does NOT include fomral sign-off. USER STORIES in Product Backlog.
+- there are no major requirements missing that they knew about
+- there were no major issues with twhat we' written down that they kneow about
+- requirements for an ieration
+  - which includes a set of stories
+  - their accompanying acceptance criteria and acceptance tests
+  - The ultimate sign-off is acceptane of the working testied software delveried from teh iteration
 
-
-#### page 41
+#### Next Steps
+- which items from Bill of Rights/Responsibilities are curenlt accepted and practived
+- Discuss Bill of Rights/Responsibilities an ssee discrepencies - monitor discrepencies
+- identify one example fro ma current or past project of not having the necesary level of customer participation. Consider what the impacet of that was. See if you can quantify the reisk oin terms of numebr of late requiremetns changes, time specnt fixing the product after delveiry, or business oppornuties misd.d Use that expetierin i hte futue as a story from learn from and convinve others why cusotmer enagangement is so vital.
+-
