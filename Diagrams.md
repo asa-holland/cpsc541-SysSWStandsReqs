@@ -373,17 +373,18 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant C as Customer
+    participant A as Agent
     participant S as System
     participant PG as Payment Gateway
     participant BD as Booking Database
 
-    C->>S: Inputs payment details (credit card, billing information)
+    C->>A: Provides payment details (credit card, billing information)
+    A->>S: Inputs payment details into the system
     S->>PG: Forwards payment details for verification
     PG->>S: Verifies and processes payment
     S->>BD: Confirms payment status
-    S->>C: Sends payment confirmation or failure message
-    S->>C: Notifies customer of payment failure
-
+    S->>A: Sends payment confirmation or failure message
+    S->>C: Notifies customer of payment status
 ```
 
 ```mermaid
@@ -492,4 +493,128 @@ graph TD
     class IM,BS,PP,NH,CPM,L2 control;
     class DB,BD,CPD,L3 entity;
 
+```
+
+
+```mermaid
+graph TD
+    HM["Hotel Manager"]:::boundary
+    IM["Inventory<br/>Management"]:::control
+    DB["Inventory"]:::entity
+
+    %% FR1: Manage Inventory
+    HM --->|Inputs room<br/>availability & details| IM
+    IM --->|Updates<br/>inventory| DB
+    IM --->|Confirmation<br/>or error| HM
+
+    %% FR2: Search Inventory
+    MA["MyTravel Agent"]:::boundary
+    MA --->|Inputs search<br/>criteria| IM
+    IM --->|Queries<br/>inventory| DB
+    DB --->|Search<br/>results| IM
+    IM --->|Filters results<br/>or no matches| MA
+
+    %% Class Definitions
+    classDef boundary fill:#99FF99,stroke:#333,stroke-width:2px;
+    classDef control fill:#ADD8E6,stroke:#333,stroke-width:2px;
+    classDef entity fill:#FFA500,stroke:#333,stroke-width:2px;
+
+    class HM,MA boundary;
+    class IM control;
+    class DB entity;
+```
+
+```mermaid
+graph TD
+    MA["MyTravel Agent"]:::boundary
+    BS["Booking<br/>Service"]:::control
+    IM["Inventory<br/>Management"]:::control
+    BD["Booking"]:::entity
+
+    %% FR3: Book Room
+    MA --->|Inputs booking<br/>criteria<br/>for customer| BS
+    BS --->|Checks<br/>availability| IM
+    IM --->|Returns<br/>rooms| BS
+    MA --->|Confirms<br/>booking| BS
+    BS --->|Processes<br/>booking| BD
+    BS --->|Sends confirmation<br/>or error| MA
+
+    %% Class Definitions
+    classDef boundary fill:#99FF99,stroke:#333,stroke-width:2px;
+    classDef control fill:#ADD8E6,stroke:#333,stroke-width:2px;
+    classDef entity fill:#FFA500,stroke:#333,stroke-width:2px;
+
+    class MA boundary;
+    class BS,IM control;
+    class BD entity;
+
+```
+
+
+```mermaid
+graph TD
+    MA["MyTravel Agent"]:::boundary
+    PP["Payment<br/>Processing"]:::control
+    PP_GATEWAY["Payment<br/>Gateway"]:::boundary
+    BD["Booking"]:::entity
+    C["Customer"]:::boundary
+
+    %% FR4: Process Payment
+    MA --->|Inputs payment<br/>details from customer| PP
+    PP --->|Sends payment<br/>to gateway| PP_GATEWAY
+    PP_GATEWAY --->|Returns<br/>status| PP
+    PP --->|Updates booking<br/>payment status| BD
+    PP --->|Sends confirmation<br/>or failure| MA
+    MA --->|Sends payment<br/>confirmation to customer| C
+
+    %% Class Definitions
+    classDef boundary fill:#99FF99,stroke:#333,stroke-width:2px;
+    classDef control fill:#ADD8E6,stroke:#333,stroke-width:2px;
+    classDef entity fill:#FFA500,stroke:#333,stroke-width:2px;
+
+    class MA,C,PP_GATEWAY boundary;
+    class PP control;
+    class BD entity;
+```
+
+```mermaid
+graph TD
+    BS["Booking<br/>Service"]:::control
+    NH["Notification<br/>Handling"]:::control
+    MA["MyTravel Agent"]:::boundary
+
+    %% FR5: Send Notification
+    BS --->|Generates<br/>notification| NH
+    NH --->|Sends notification<br/>to agent| MA
+    NH --->|Retries or<br/>notifies failure| MA
+
+    %% Class Definitions
+    classDef boundary fill:#99FF99,stroke:#333,stroke-width:2px;
+    classDef control fill:#ADD8E6,stroke:#333,stroke-width:2px;
+
+    class BS,NH control;
+    class MA boundary;
+```
+
+```mermaid
+graph TD
+    MA["MyTravel Agent"]:::boundary
+    CPM["Customer Profile<br/>Management"]:::control
+    CPD["Customer<br/>Profile"]:::entity
+
+    %% FR6: Manage Customer Profile
+    MA --->|Accesses customer<br/>profile| CPM
+    CPM --->|Displays<br/>profile details| MA
+    MA --->|Updates profile<br/>information| CPM
+    CPM --->|Saves updates<br/>to database| CPD
+    CPM --->|Notifies agent<br/>of issues| MA
+
+    %% Class Definitions
+    classDef boundary fill:#99FF99,stroke:#333,stroke-width:2px;
+    classDef control fill:#ADD8E6,stroke:#333,stroke-width:2px;
+    classDef entity fill:#FFA500,stroke:#333,stroke-width:2px;
+
+    class MA boundary;
+    class CPM control;
+    class CPD entity;
 ```
