@@ -177,7 +177,6 @@ graph TD
     HM["Hotel Manager"]:::external
     MA["MyTravel Agent"]:::external
     C["Customer"]:::external
-    U["User"]:::external
 
     %% System Components
     S["System"]:::system
@@ -421,7 +420,6 @@ graph TD
     HM["Hotel Manager"]:::boundary
     MA["MyTravel Agent"]:::boundary
     C["Customer"]:::boundary
-    U["User<br/>(MA/HM/C)"]:::boundary
 
     %% Control (Blue)
     IM["Inventory<br/>Management"]:::control
@@ -449,7 +447,7 @@ graph TD
     IM --->|Filters results<br/>or no matches| MA
 
     %% FR3: Book Room
-    MA --->|Inputs booking<br/>criteria| BS
+    MA --->|Inputs booking<br/>criteria<br/>for customer| BS
     BS --->|Checks<br/>availability| IM
     IM --->|Returns<br/>rooms| BS
     MA --->|Confirms<br/>booking| BS
@@ -457,16 +455,17 @@ graph TD
     BS --->|Sends confirmation<br/>or error| MA
 
     %% FR4: Process Payment
-    C --->|Provides payment<br/>details| PP
+    MA --->|Inputs payment<br/>details from customer| PP
     PP --->|Sends payment<br/>to gateway| PP_GATEWAY["Payment<br/>Gateway"]:::boundary
     PP_GATEWAY --->|Returns<br/>status| PP
     PP --->|Updates booking<br/>payment status| BD
-    PP --->|Sends confirmation<br/>or failure| C
+    PP --->|Sends confirmation<br/>or failure| MA
+    MA --->|Sends payment<br/>confirmation to customer| C
 
     %% FR5: Send Notification
     BS --->|Generates<br/>notification| NH
-    NH --->|Sends notification<br/>to user| U
-    NH --->|Retries or<br/>notifies failure| U
+    NH --->|Sends notification<br/>to agent| MA
+    NH --->|Retries or<br/>notifies failure| MA
 
     %% FR6: Manage Customer Profile
     MA --->|Accesses customer<br/>profile| CPM
@@ -492,4 +491,5 @@ graph TD
     class HM,MA,C,U,PP_GATEWAY,L1 boundary;
     class IM,BS,PP,NH,CPM,L2 control;
     class DB,BD,CPD,L3 entity;
+
 ```
