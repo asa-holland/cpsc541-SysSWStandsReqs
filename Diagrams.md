@@ -618,3 +618,119 @@ graph TD
     class CPM control;
     class CPD entity;
 ```
+
+
+```mermaid
+classDiagram
+
+    %% Customer
+    class Customer {
+        +int id
+        +string name
+        +string email
+        +string phone
+        +string billingInfo
+    }
+
+    %% Agent
+    class Agent {
+        +int id
+        +string name
+        +string contactInfo
+        +int customerID
+        -processPayment(paymentDetails)
+        -manageBooking(bookingDetails)
+        -updateCustomerProfile(profileDetails)
+    }
+
+    %% Inventory Management
+    class InventoryManagement {
+        +int id
+        +string roomType
+        +int availableRooms
+        +float pricePerNight
+        -updateRoomAvailability(roomDetails)
+        -searchRooms(criteria)
+    }
+
+    %% Booking Service
+    class BookingService {
+        +int id
+        +string bookingStatus
+        +date checkInDate
+        +date checkOutDate
+        +int customerID
+        +int roomID
+        -createBooking(bookingDetails)
+        -confirmBooking(bookingID)
+    }
+
+    %% Payment Processing
+    class PaymentProcessing {
+        +int id
+        +float amount
+        +string paymentStatus
+        +int bookingID
+        +int agentID
+        -processPayment(paymentDetails)
+        -updatePaymentStatus(status)
+    }
+
+    %% Notification Handling
+    class NotificationHandling {
+        +int id
+        +string notificationType
+        +string message
+        +date sentAt
+        -sendNotification(recipient, message)
+        -retryFailedNotification(notificationID)
+    }
+
+    %% Customer Profile Management
+    class CustomerProfileManagement {
+        +int id
+        +string profileDetails
+        +int customerID
+        -getProfile(customerID)
+        -updateProfile(profileDetails)
+    }
+
+    %% Inventory (Database Table)
+    class Inventory {
+        +int id
+        +string roomType
+        +int availableRooms
+        +float pricePerNight
+    }
+
+    %% Booking (Database Table)
+    class Booking {
+        +int id
+        +int roomID
+        +int customerID
+        +date checkInDate
+        +date checkOutDate
+        +float totalAmount
+        +string bookingStatus
+    }
+
+    %% Customer Profile (Database Table)
+    class CustomerProfile {
+        +int id
+        +int customerID
+        +string profileDetails
+    }
+
+    %% Relationships
+    Customer --|> Agent : "interacts with"
+    Agent --> BookingService : "manages booking"
+    Agent --> PaymentProcessing : "manages payment"
+    Agent --> CustomerProfileManagement : "manages profile"
+    BookingService --> InventoryManagement : "checks room availability"
+    BookingService --> Booking : "updates booking records"
+    PaymentProcessing --> PaymentGateway : "sends payment details"
+    PaymentProcessing --> Booking : "updates payment status"
+    NotificationHandling --> Agent : "sends notifications"
+    CustomerProfileManagement --> CustomerProfile : "stores profile details"
+    InventoryManagement --> Inventory : "stores room details"
+```
